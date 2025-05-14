@@ -1,5 +1,6 @@
 package com.microservice.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,6 +35,7 @@ public class Product {
     @Column(name = "brand")
     private String brand;
 
+//    @JsonIgnore
     @Column(name = "showroom_id")
     private Integer showroomId;
 

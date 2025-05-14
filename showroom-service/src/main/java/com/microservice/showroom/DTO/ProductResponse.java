@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductResponse {
-    private int id;
+
     private String model;
     private Double price;
     private String colour;
     private String stock;
     private String brand;
-//    private Integer showroomId;
+   //private Integer showroomId;
 }

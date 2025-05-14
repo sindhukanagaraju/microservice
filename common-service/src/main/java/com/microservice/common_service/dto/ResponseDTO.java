@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor(force = true)
-public record ResponseDTO (Integer statusCode, String message,Object data
-){
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor(force = true)
+public class ResponseDTO {
+    private final Integer statusCode;
+    private final String message;
+    private final Object data;
 }

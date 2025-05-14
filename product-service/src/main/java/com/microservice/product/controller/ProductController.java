@@ -21,9 +21,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/product/showroom/{Id}")
-    public ResponseDTO findProductByShowroomId(@PathVariable("Id") final int showroomId) {
-        return new ResponseDTO(HttpStatus.OK.value(), Constant.RETRIEVE, this.productService.retrieveProductById(showroomId));
+    @GetMapping("/product/retrieve/{showroomId}")
+    public ResponseEntity<ResponseDTO> getProductsByShowroomId(@PathVariable int showroomId) {
+        List<ProductResponse> products = productService.findProductByShowroomId(showroomId);
+        return ResponseEntity.ok(new ResponseDTO(200, "Products fetched", products));
     }
 
     @PostMapping("/product")

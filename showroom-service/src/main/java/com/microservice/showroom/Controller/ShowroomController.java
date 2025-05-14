@@ -1,6 +1,5 @@
 package com.microservice.showroom.Controller;
 
-//import com.microservice.common_service.config.WebClientFactory;
 import com.microservice.common_service.dto.ResponseDTO;
 import com.microservice.common_service.util.Constant;
 import com.microservice.showroom.entity.Showroom;
@@ -16,23 +15,23 @@ import javax.naming.ServiceUnavailableException;
 public class ShowroomController {
 
     @Autowired
-    private  ShowroomService showroomService;
+    private ShowroomService showroomService;
 
     public ShowroomController(final ShowroomService showroomService) {
         this.showroomService = showroomService;
     }
 
-//    @GetMapping("/showroom/{id}")
-//    private ResponseDTO getShowroomById(@PathVariable("id") final Integer id) throws ServiceUnavailableException {
-//        return new ResponseDTO(HttpStatus.OK.value(), Constant.RETRIEVE, this.showroomService.getShowroomById(id));
-//    }
+    @GetMapping("/showroom/{id}")
+    public ResponseDTO getShowroomById(@PathVariable("id") final Integer id) throws ServiceUnavailableException {
+        return new ResponseDTO(HttpStatus.OK.value(), Constant.RETRIEVE, this.showroomService.getShowroomById(id));
+    }
 
     @PostMapping("/showroom")
     public ResponseDTO createShowroom(@RequestBody final Showroom showroom) {
         return new ResponseDTO(HttpStatus.OK.value(), Constant.CREATE, this.showroomService.createShowroom(showroom));
     }
 
-    @GetMapping("/showroom/retrieve/{id}")
+    @GetMapping("/showroom/retrieved/{id}")
     public ResponseDTO retrieveShowroomById(@PathVariable final Integer id) {
         return new ResponseDTO(HttpStatus.OK.value(), Constant.RETRIEVE, this.showroomService.retrieveShowroomById(id));
     }
@@ -44,7 +43,7 @@ public class ShowroomController {
 
     @PutMapping("/showroom/{id}")
     public ResponseDTO updateShowroomById(@PathVariable final Integer id, @RequestBody final Showroom showroom) {
-        return new ResponseDTO(HttpStatus.OK.value(), Constant.UPDATE, this.showroomService.updateShowroomById( id,showroom));
+        return new ResponseDTO(HttpStatus.OK.value(), Constant.UPDATE, this.showroomService.updateShowroomById(showroom, id));
     }
 
     @DeleteMapping("/showroom/{id}")

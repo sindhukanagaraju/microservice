@@ -14,13 +14,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BadRequestServiceAlertException.class)
     public ResponseEntity<ResponseDTO> handleBadRequestServiceAlertException(final BadRequestServiceAlertException exception, WebRequest request) {
         ResponseDTO responseDTO = new ResponseDTO(HttpStatus.BAD_REQUEST.value(), exception.getMessage(), request.getDescription(false));
-        exception.printStackTrace();
+
         return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseDTO> handleSecurityException(final Exception exception, WebRequest request) {
-        exception.printStackTrace();
+
         ResponseDTO responseDTO = new ResponseDTO(HttpStatus.BAD_REQUEST.value(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
     }
